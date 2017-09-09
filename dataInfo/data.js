@@ -1,7 +1,6 @@
 module.exports = {
     chargeInfo: `{"weekCharges":{"one":30,"two":50,"three":80,"four":60},"weekendCharges":{"one":40,"two":50,"three":60}}`,
     spaceInfo: `{
-  "spaceInfo": {
     "A": {
       "bookInfo": [],
       "subtotal": 0
@@ -19,6 +18,5 @@ module.exports = {
       "subtotal": 0
     },
     "total": 0
-  }
-}`
+  }`
 };
