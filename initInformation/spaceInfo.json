@@ -1,29 +1,21 @@
 {
-  "spaceInfo": [
-    {
-      "A": {
-        "bookInfo": [],
-        "subtotal": 0
-      }
+  "spaceInfo": {
+    "A": {
+      "bookInfo": [],
+      "subtotal": 0
     },
-    {
-      "B": {
-        "bookInfo": [],
-        "subtotal": 0
-      }
+    "B": {
+      "bookInfo": [],
+      "subtotal": 0
     },
-    {
-      "C": {
-        "bookInfo": [],
-        "subtotal": 0
-      }
+    "C": {
+      "bookInfo": [],
+      "subtotal": 0
     },
-    {
-      "D": {
-        "bookInfo": [],
-        "subtotal": 0
-      }
-    }
-  ],
-  "total": 0
+    "D": {
+      "bookInfo": [],
+      "subtotal": 0
+    },
+    "total": 0
+  }
 }
