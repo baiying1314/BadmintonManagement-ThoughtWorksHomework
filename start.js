@@ -1,20 +1,23 @@
 var fs = require('fs');
 
 var statFile = require('./fileOperation/statFile');
+var writeFile = require('./fileOperation/writeFile');
 
 statFile('./initInformation/spaceInfo.json', (statSpaceResult)=> {
     if (statSpaceResult) {
-       statFile('./initInformation/chargeInfo.json', (statChargeResult) =>{
+        statFile('./initInformation/chargeInfo.json', (statChargeResult) => {
             if (statChargeResult) {
                 console.log('文件存在');
             }
             else {
                 var chargesInfoData = `{"weekCharges":{"one":30,"two":50,"three":80,"four":60},"weekendCharges":{"one":40,"two":50,"three":60}}`;
-                fs.writeFile('./initInformation/chargeInfo.json', chargesInfoData, function (err) {
-                    if (err) {
-                        return console.error(err);
+                writeFile('./initInformation/chargeInfo.json', chargesInfoData, (writeChargeResult)=> {
+                    if (writeChargeResult) {
+                        console.log('write ChargeInfo successfully');
                     }
-                    return;
+                    else {
+                        console.log('write ChargeInfo unsuccessfully');
+                    }
                 })
             }
         })
@@ -48,11 +51,28 @@ statFile('./initInformation/spaceInfo.json', (statSpaceResult)=> {
   ],
   "total": 0
 }`;
-        fs.writeFile('./initInformation/spaceInfo.json', spaceInfoData, function (err) {
-            if (err) {
-                return console.error(err);
+        writeFile('./initInformation/spaceInfo.json', spaceInfoData, (writeSpaceResult) => {
+            if (writeSpaceResult) {
+                statFile('./initInformation/chargeInfo.json', (statChargeResult) => {
+                    if (statChargeResult) {
+                        console.log('文件存在');
+                    }
+                    else {
+                        var chargesInfoData = `{"weekCharges":{"one":30,"two":50,"three":80,"four":60},"weekendCharges":{"one":40,"two":50,"three":60}}`;
+                        writeFile('./initInformation/chargeInfo.json', chargesInfoData, (writeChargeResult)=> {
+                            if (writeChargeResult) {
+                                console.log('write ChargeInfo successfully');
+                            }
+                            else {
+                                console.log('write ChargeInfo unsuccessfully');
+                            }
+                        })
+                    }
+                })
             }
-            return;
+            else {
+                console.log('err');
+            }
         })
     }
 });

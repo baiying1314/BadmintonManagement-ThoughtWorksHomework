@@ -1,13 +1,1 @@
-{
-  "weekCharges": {
-    "one": 30,
-    "two": 50,
-    "three": 80,
-    "four": 60
-  },
-  "weekendCharges": {
-    "one": 40,
-    "two": 50,
-    "three": 60
-  }
-}
+{"weekCharges":{"one":30,"two":50,"three":80,"four":60},"weekendCharges":{"one":40,"two":50,"three":60}}
