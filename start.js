@@ -1,10 +1,12 @@
 var fs = require('fs');
 
-fs.stat('./initInformation/spaceInfo.json', function (err, stat) {
-    if (stat && stat.isFile()) {
-        fs.stat('./initInformation/chargesInfo.json', function (err, stat) {
-            if (stat && stat.isFile()) {
-                console.log('存在')
+var statFile = require('./fileOperation/statFile');
+
+statFile('./initInformation/spaceInfo.json', (statSpaceResult)=> {
+    if (statSpaceResult) {
+       statFile('./initInformation/chargeInfo.json', (statChargeResult) =>{
+            if (statChargeResult) {
+                console.log('文件存在');
             }
             else {
                 var chargesInfoData = `{"weekCharges":{"one":30,"two":50,"three":80,"four":60},"weekendCharges":{"one":40,"two":50,"three":60}}`;
