@@ -15,9 +15,6 @@ statFile('./initInformation/spaceInfo.json', (statSpaceResult)=> {
             var chargesInfoData = dataInfo.chargeInfo;
 
             writeFile('./initInformation/chargeInfo.json', chargesInfoData, (writeChargeResult)=> {
-                if (writeChargeResult) {
-                    console.log('write ChargeInfo successfully');
-                }
                 if (statSpaceResult && writeChargeResult) {
                     rl.on('line', (aswer)=> {
                         judgeInputFormat(aswer);
@@ -31,9 +28,6 @@ statFile('./initInformation/spaceInfo.json', (statSpaceResult)=> {
             var spaceInfoData = dataInfo.spaceInfo;
 
             writeFile('./initInformation/spaceInfo.json', spaceInfoData, (writeSpaceResult) => {
-                if (writeSpaceResult) {
-                    console.log('write spaceInfo successfully');
-                }
                 if (writeSpaceResult && statChargeResult) {
                     rl.on('line', (aswer)=> {
                         judgeInputFormat(aswer);

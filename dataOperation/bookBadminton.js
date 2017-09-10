@@ -1,5 +1,3 @@
-var fs = require('fs');
-
 var writeFile = require('../fileOperation/writeFile');
 var readFile = require('../fileOperation/readFile');
 var judgeDay = require('../dataOperation/judgeWhichDay');
@@ -71,6 +69,8 @@ function writeBookToFile(spaceInfo, inputDataObj) {
     var bookInfoString = `${inputDataObj.userId} ${inputDataObj.date} ${inputDataObj.startTime}~${inputDataObj.endTime}`;
     var ifBooked = true;
     spaceInfo[inputDataObj.space].bookInfo.push({bookInfoString, oneSubtotal, ifBooked});
+    spaceInfo[inputDataObj.space].subtotal += oneSubtotal;
+    spaceInfo.total += oneSubtotal;
     var updateDataJson = JSON.stringify(spaceInfo);
     writeFile('./initInformation/spaceInfo.json', updateDataJson, (writeResult)=> {
         if (writeResult) {
@@ -79,13 +79,5 @@ function writeBookToFile(spaceInfo, inputDataObj) {
     });
 }
 
-// function splitExistString(string) {
-//     var spaceArr = string.split(' ');
-//     var date = spaceArr[0];
-//     var startTime = spaceArr[1].split('~')[0];
-//     var endTime = spaceArr[1].split('~')[1];
-//
-//     return {date, startTime, endTime}
-// }
-
 module.exports = bookBadminton;
+

@@ -15,7 +15,6 @@ function judgeWhichTime(startTime, endTime) {
         two += timeHours;
     }
     else if (numStartTime >= 18 && numEndTime <= 20) {
-        console.log('3');
         timeHours = numEndTime - numStartTime;
         three += timeHours;
     }
