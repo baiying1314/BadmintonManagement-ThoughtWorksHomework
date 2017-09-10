@@ -59,7 +59,6 @@ function judgeConflict(inputDataObj, callback) {
 }
 
 function writeBookToFile(spaceInfo, selectSpace,inputString) {
-    console.log(selectSpace);
     spaceInfo[selectSpace].bookInfo.push(inputString);
     var updateDataJson = JSON.stringify(spaceInfo);
     writeFile('./initInformation/spaceInfo.json', updateDataJson, (writeResult)=> {
