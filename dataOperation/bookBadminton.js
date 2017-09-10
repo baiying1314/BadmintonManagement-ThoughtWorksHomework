@@ -1,7 +1,8 @@
 var fs = require('fs');
 
-
+var writeFile = require('../fileOperation/writeFile');
 function bookBadminton(inputString) {
+    console.log('sfgs');
 
     var bookInputArr = inputString.split(' ');
     var inputStartTime = bookInputArr[2].split('~')[0];
@@ -27,8 +28,9 @@ function bookBadminton(inputString) {
                 if (i >= selectBookInfo.length) {
                     selectBookInfo.push(inputString);
                     var updateDataJson = JSON.stringify(spaceInfo);
-                    fs.writeFile('./initInformation/spaceInfo.json', updateDataJson, (err)=> {
-                        if (!err) {
+
+                    writeFile('./initInformation/spaceInfo.json', updateDataJson, (writeResult)=> {
+                        if (writeResult) {
                             console.log('Success: the booking is accepted!');
                         }
                     });
