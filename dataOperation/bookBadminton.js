@@ -1,16 +1,14 @@
 var fs = require('fs');
 
 var writeFile = require('../fileOperation/writeFile');
+var readFile = require('../fileOperation/readFile');
 function bookBadminton(inputString) {
-    console.log('sfgs');
 
     var bookInputArr = inputString.split(' ');
     var inputStartTime = bookInputArr[2].split('~')[0];
     var inputEndTime = bookInputArr[2].split('~')[1];
     if (inputEndTime > inputStartTime && (inputStartTime >= '09:00' && inputEndTime <= '22:00')) {
-        fs.readFile('./initInformation/spaceInfo.json', 'utf8', function (err, data) {
-            if (!err) {
-                var spaceInfo = JSON.parse(data);
+        readFile('./initInformation/spaceInfo.json', 'utf8', (spaceInfo)=> {
                 var selectSpace = bookInputArr[bookInputArr.length - 1];
                 var correspondSpace = spaceInfo[selectSpace];
                 var selectBookInfo = correspondSpace.bookInfo;
@@ -36,7 +34,7 @@ function bookBadminton(inputString) {
                     });
                 }
             }
-        });
+        );
     }
 }
 
