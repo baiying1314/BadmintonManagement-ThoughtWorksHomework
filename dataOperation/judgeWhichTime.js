@@ -68,4 +68,4 @@ function judgeWhichTime(startTime, endTime) {
     return timeInfo;
 }
 
-judgeWhichTime('20:00', '22:00');
+module.exports = judgeWhichTime;
