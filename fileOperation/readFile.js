@@ -6,7 +6,7 @@ var readFile = (path, charset, callback)=> {
             var spaceInfo = JSON.parse(data);
             return callback(spaceInfo);
         }
-        return console.log(err);
+        return;
     })
 };
 
