@@ -43,5 +43,10 @@ statFile('./initInformation/spaceInfo.json', (statSpaceResult)=> {
                 }
             });
         }
+        else {
+            rl.on('line', (aswer)=> {
+                judgeInputFormat(aswer);
+            })
+        }
     });
 });
