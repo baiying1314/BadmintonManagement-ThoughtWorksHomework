@@ -6,25 +6,11 @@ var judgeInputFormat = require('./dataOperation/judgeInputFormat');
 
 function main() {
     statFile('./initInformation/spaceInfo.json', (statSpaceResult)=> {
-        statFile('./initInformation/chargeInfo.json', (statChargeResult) => {
-            if (!statChargeResult) {
-                createChargeFile();
-            } else if (!statSpaceResult) {
+            if (!statSpaceResult) {
                 createSpaceFile();
             } else {
                 getUserInput();
             }
-        });
-    });
-}
-
-function createChargeFile() {
-    var chargesInfoData = dataInfo.chargeInfo;
-
-    writeFile('./initInformation/chargeInfo.json', chargesInfoData, (writeChargeResult)=> {
-        if (statSpaceResult && writeChargeResult) {
-            getUserInput();
-        }
     });
 }
 
@@ -32,7 +18,7 @@ function createSpaceFile() {
     var spaceInfoData = dataInfo.spaceInfo;
 
     writeFile('./initInformation/spaceInfo.json', spaceInfoData, (writeSpaceResult) => {
-        if (writeSpaceResult && statChargeResult) {
+        if (writeSpaceResult) {
             getUserInput();
         }
     });
