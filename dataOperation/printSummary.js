@@ -12,15 +12,15 @@ function createPrintString() {
         var total = spaceInfo.total;
         var printString = `收入汇总
 ---
-场地:A${spaceAString}
+场地：A${spaceAString}
 
-场地:B${spaceBString}
+场地：B${spaceBString}
 
-场地:C${spaceCString}
+场地：C${spaceCString}
 
-场地:D${spaceDString}
+场地：D${spaceDString}
 ---
-总计: ${total}元`;
+总计：${total}元`;
         console.log(printString);
     });
 

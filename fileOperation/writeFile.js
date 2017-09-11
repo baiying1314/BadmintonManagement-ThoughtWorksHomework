@@ -1,14 +1,8 @@
 var fs = require('fs');
 
-var writeFile = (path,writeData,callback)=> {
-    fs.writeFile(path, writeData, function (err) {
-        if (err) {
-            callback(false);
-            return;
-        }
-       callback(true);
-        return;
-    })
+var writeFile = (path, writeData, callback)=> {
+    fs.writeFileSync(path, writeData);
+    callback(true);
 };
 
 module.exports = writeFile;

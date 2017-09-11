@@ -1,5 +1,5 @@
 var fs = require('fs');
-var statFile = (path,callback)=> {
+var statFile = (path, callback)=> {
     fs.stat(path, function (err, stat) {
         if (stat && stat.isFile()) {
             callback(true);
