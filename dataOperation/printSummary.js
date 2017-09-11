@@ -1,16 +1,16 @@
 var readFile = require('../fileOperation/readFile');
+var sortBookInfo = require('./sortBookInfo');
 
 var splitInputString = require('./splitInputString');
 function createPrintString() {
-    readFile('./initInformation/spaceInfo.json', 'utf-8', (spaceInfo)=> {
-
+    readFile('./initInformation/spaceInfo.json', 'utf-8', (spaceInfoun)=> {
+        var spaceInfo = sortBookInfo(spaceInfoun);
         var spaceAString = createEverySpaceString(spaceInfo, 'A');
         var spaceBString = createEverySpaceString(spaceInfo, 'B');
         var spaceCString = createEverySpaceString(spaceInfo, 'C');
         var spaceDString = createEverySpaceString(spaceInfo, 'D');
         var total = spaceInfo.total;
-        var printString = `
-收入汇总
+        var printString = `收入汇总
 ---
 场地:A${spaceAString}
 

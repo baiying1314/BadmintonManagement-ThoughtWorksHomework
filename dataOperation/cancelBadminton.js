@@ -8,8 +8,9 @@ function cancelBadminton(cancelString) {
     readFile('./initInformation/spaceInfo.json', 'utf8', (spaceInfo)=> {
         var cancelSpaceInfo = spaceInfo[cancelObj.space];
         for (var i = 0; i < cancelSpaceInfo.bookInfo.length; i++) {
+            var spaceItem = cancelSpaceInfo.bookInfo[i];
             var spaceObj = splitInputString(cancelSpaceInfo.bookInfo[i].bookInfoString);
-            if ((cancelObj.userId === spaceObj.userId && cancelObj.date === spaceObj.date && cancelObj.startTime === spaceObj.startTime && cancelObj.endTime === spaceObj.endTime && spaceObj && cancelSpaceInfo.bookInfo[i].ifBooked === true)) {
+            if ((spaceItem.userId === spaceItem.userId && cancelObj.date === spaceObj.date && cancelObj.startTime === spaceObj.startTime && cancelObj.endTime === spaceObj.endTime && spaceObj && spaceItem.ifBooked === true)) {
                 var whichDay = judgeWhichDay(spaceObj.date);
                 if (whichDay === 'week') {
                     var oneSubtotal = spaceInfo[cancelObj.space].bookInfo[i].oneSubtotal * 0.5;

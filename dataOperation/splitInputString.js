@@ -1,6 +1,6 @@
 function splitInputString(spaceString) {
     var bookInputArr = spaceString.split(" ");
-    if(bookInputArr.length >3){
+    if(bookInputArr.length >2){
         var userId = bookInputArr[0];
         var date = bookInputArr[1];
         var startTime = bookInputArr[2].split('~')[0];
@@ -10,11 +10,10 @@ function splitInputString(spaceString) {
 
     }
     else {
-        var userId = bookInputArr[0];
-        var date = bookInputArr[1];
-        var startTime = bookInputArr[2].split('~')[0];
-        var endTime = bookInputArr[2].split('~')[1];
-        return {userId,date, startTime, endTime}
+        var date = bookInputArr[0];
+        var startTime = bookInputArr[1].split('~')[0];
+        var endTime = bookInputArr[1].split('~')[1];
+        return {date, startTime, endTime}
     }
 }
 
