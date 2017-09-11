@@ -12,6 +12,7 @@ var judgeInputFormat = require('./dataOperation/judgeInputFormat');
 statFile('./initInformation/spaceInfo.json', (statSpaceResult)=> {
     statFile('./initInformation/chargeInfo.json', (statChargeResult) => {
         if (!statChargeResult) {
+
             var chargesInfoData = dataInfo.chargeInfo;
 
             writeFile('./initInformation/chargeInfo.json', chargesInfoData, (writeChargeResult)=> {

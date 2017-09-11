@@ -62,9 +62,8 @@ function writeBookToFile(spaceInfo, inputDataObj) {
     var whichTime = judgeTime(inputDataObj.startTime, inputDataObj.endTime);
     if (whichDay === 'week') {
         oneSubtotal += whichTime.one * chargeInfo.week.one + whichTime.two * chargeInfo.week.two + whichTime.three * chargeInfo.week.three + whichTime.four * chargeInfo.week.four;
-    } else if (whichDay === 'weekend') {
+    } else{
         oneSubtotal += whichTime.one * chargeInfo.weekend.one + whichTime.two * chargeInfo.weekend.two + whichTime.three * chargeInfo.weekend.three + whichTime.four * chargeInfo.weekend.four;
-
     }
     var bookInfoString = `${inputDataObj.userId} ${inputDataObj.date} ${inputDataObj.startTime}~${inputDataObj.endTime}`;
     var ifBooked = true;
