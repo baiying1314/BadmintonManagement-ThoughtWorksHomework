@@ -9,32 +9,38 @@ function cancelBadminton(cancelString) {
         var cancelSpaceInfo = spaceInfo[cancelObj.space];
         for (var i = 0; i < cancelSpaceInfo.bookInfo.length; i++) {
             var spaceItem = cancelSpaceInfo.bookInfo[i];
-            var spaceObj = splitInputString(cancelSpaceInfo.bookInfo[i].bookInfoString);
-            if ((spaceItem.userId === spaceItem.userId && cancelObj.date === spaceObj.date && cancelObj.startTime === spaceObj.startTime && cancelObj.endTime === spaceObj.endTime && spaceObj && spaceItem.ifBooked === true)) {
+            var spaceObj = splitInputString(spaceItem.bookInfoString);
+            var exist = ifExist(spaceItem, spaceObj, cancelObj);
+            if (exist) {
                 var whichDay = judgeWhichDay(spaceObj.date);
-                if (whichDay === 'week') {
-                    var oneSubtotal = spaceInfo[cancelObj.space].bookInfo[i].oneSubtotal * 0.5;
-                    spaceInfo[cancelObj.space].bookInfo[i].oneSubtotal -= oneSubtotal;
-                    spaceInfo[cancelObj.space].subtotal -= oneSubtotal;
-                    spaceInfo.total -= oneSubtotal;
-                }
-                else {
-                    oneSubtotal = spaceInfo[cancelObj.space].bookInfo[i].oneSubtotal * 0.75;
-                    spaceInfo[cancelObj.space].bookInfo[i].oneSubtotal -= oneSubtotal;
-                    spaceInfo[cancelObj.space].subtotal -= oneSubtotal;
-                    spaceInfo.total -= oneSubtotal;
-                }
-                spaceInfo[cancelObj.space].bookInfo[i].ifBooked = false;
-                var updateDataJson = JSON.stringify(spaceInfo);
-
+                var updateDataJson = modifyTotal(whichDay, spaceInfo, spaceItem, cancelSpaceInfo);
                 fs.writeFileSync('./initInformation/spaceInfo.json', updateDataJson);
                 return console.log('Success: the booking is accepted!');
             }
         }
-
-        if (i == cancelSpaceInfo.bookInfo.length) {
             return console.log('Error: the booking being cancelled does not exist!');
-        }
     });
+}
+
+function modifyTotal(whichDay, spaceInfo, spaceItem, cancelSpaceInfo) {
+    if (whichDay === 'week') {
+        var oneSubtotal = spaceItem.oneSubtotal * 0.5;
+        spaceItem.oneSubtotal -= oneSubtotal;
+        cancelSpaceInfo.subtotal -= oneSubtotal;
+        spaceInfo.total -= oneSubtotal;
+    }
+    else {
+        oneSubtotal = spaceItem.oneSubtotal * 0.75;
+        spaceItem.oneSubtotal -= oneSubtotal;
+        cancelSpaceInfo.subtotal -= oneSubtotal;
+        spaceInfo.total -= oneSubtotal;
+    }
+    spaceItem.ifBooked = false;
+    var updateDataJson = JSON.stringify(spaceInfo);
+    return updateDataJson;
+}
+
+function ifExist(spaceItem, spaceObj, cancelObj) {
+    return (spaceItem.userId === spaceItem.userId && cancelObj.date === spaceObj.date && cancelObj.startTime === spaceObj.startTime && cancelObj.endTime === spaceObj.endTime && spaceObj && spaceItem.ifBooked === true)
 }
 module.exports = cancelBadminton;

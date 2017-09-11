@@ -57,21 +57,14 @@ function judgeConflict(inputDataObj, callback) {
 }
 
 function writeBookToFile(spaceInfo, inputDataObj) {
-    var oneSubtotal = 0;
     var whichDay = judgeDay(inputDataObj.date);
     var whichTime = judgeTime(inputDataObj.startTime, inputDataObj.endTime);
-    if (whichDay === 'week') {
-        oneSubtotal += whichTime.one * chargeInfo.week.one + whichTime.two * chargeInfo.week.two + whichTime.three * chargeInfo.week.three + whichTime.four * chargeInfo.week.four;
-    } else {
-        oneSubtotal += whichTime.one * chargeInfo.weekend.one + whichTime.two * chargeInfo.weekend.two + whichTime.three * chargeInfo.weekend.three + whichTime.four * chargeInfo.weekend.four;
-    }
+    var oneSubtotal = calculateOneSubtotal(whichDay, whichTime);
     var bookInfoString = `${inputDataObj.date} ${inputDataObj.startTime}~${inputDataObj.endTime}`;
     var ifBooked = true;
     var userId = `${inputDataObj.userId}`;
-    spaceInfo[inputDataObj.space].bookInfo.push({userId, bookInfoString, oneSubtotal, ifBooked});
-    spaceInfo[inputDataObj.space].subtotal += oneSubtotal;
-    spaceInfo.total += oneSubtotal;
-    var updateDataJson = JSON.stringify(spaceInfo);
+    var updateDataJson = createSpaceData(spaceInfo, inputDataObj, userId, bookInfoString, oneSubtotal, ifBooked);
+
     writeFile('./initInformation/spaceInfo.json', updateDataJson, (writeResult)=> {
         if (writeResult) {
             console.log('Success: the booking is accepted!');
@@ -79,5 +72,23 @@ function writeBookToFile(spaceInfo, inputDataObj) {
     });
 }
 
+function createSpaceData(spaceInfo, inputDataObj, userId, bookInfoString, oneSubtotal, ifBooked) {
+    spaceInfo[inputDataObj.space].bookInfo.push({userId, bookInfoString, oneSubtotal, ifBooked});
+    spaceInfo[inputDataObj.space].subtotal += oneSubtotal;
+    spaceInfo.total += oneSubtotal;
+    var updateDataJson = JSON.stringify(spaceInfo);
+    return updateDataJson;
+}
+
+function calculateOneSubtotal(whichDay, whichTime) {
+    var oneSubtotal = 0;
+    if (whichDay === 'week') {
+        oneSubtotal += whichTime.one * chargeInfo.week.one + whichTime.two * chargeInfo.week.two + whichTime.three * chargeInfo.week.three + whichTime.four * chargeInfo.week.four;
+    } else {
+        oneSubtotal += whichTime.one * chargeInfo.weekend.one + whichTime.two * chargeInfo.weekend.two + whichTime.three * chargeInfo.weekend.three + whichTime.four * chargeInfo.weekend.four;
+    }
+
+    return oneSubtotal;
+}
 module.exports = bookBadminton;
 
