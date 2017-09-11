@@ -1,6 +1,12 @@
 function judgeWhichTime(startTime, endTime) {
     var numStartTime = parseInt(startTime);
     var numEndTime = parseInt(endTime);
+    var timeInfo = calculateHours(numStartTime, numEndTime);
+    return timeInfo;
+}
+
+
+function calculateHours(numStartTime, numEndTime) {
     var one = 0, two = 0, three = 0, four = 0, timeHours = 0;
     if (numEndTime <= 12) {
         timeHours = numEndTime - numStartTime;
@@ -58,13 +64,7 @@ function judgeWhichTime(startTime, endTime) {
         timeHours = numEndTime - 20;
         four += timeHours;
     }
-    var timeInfo = {
-        "one": one,
-        "two": two,
-        "three": three,
-        "four": four,
-    };
-    return timeInfo;
-}
 
+    return {one, two, three, four}
+}
 module.exports = judgeWhichTime;

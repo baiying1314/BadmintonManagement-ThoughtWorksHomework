@@ -1,0 +1,63 @@
+{
+  "A": {
+    "bookInfo": [
+      {
+        "userId": "U002",
+        "bookInfoString": "2017-08-01 19:00~22:00",
+        "oneSubtotal": 100,
+        "ifBooked": false
+      },
+      {
+        "userId": "U003",
+        "bookInfoString": "2017-08-01 18:00~20:00",
+        "oneSubtotal": 160,
+        "ifBooked": true
+      }
+    ],
+    "subtotal": 260
+  },
+  "B": {
+    "bookInfo": [
+      {
+        "userId": "U003",
+        "bookInfoString": "2017-08-02 13:00~17:00",
+        "oneSubtotal": 200,
+        "ifBooked": true
+      },
+      {
+        "userId": "U002",
+        "bookInfoString": "2017-08-01 19:00~22:00",
+        "oneSubtotal": 100,
+        "ifBooked": false
+      },
+      {
+        "userId": "U002",
+        "bookInfoString": "2017-08-01 19:00~22:00",
+        "oneSubtotal": 100,
+        "ifBooked": false
+      },
+      {
+        "userId": "U002",
+        "bookInfoString": "2017-08-01 19:00~22:00",
+        "oneSubtotal": 100,
+        "ifBooked": false
+      },
+      {
+        "userId": "U002",
+        "bookInfoString": "2017-08-01 19:00~22:00",
+        "oneSubtotal": 100,
+        "ifBooked": false
+      }
+    ],
+    "subtotal": 600
+  },
+  "C": {
+    "bookInfo": [],
+    "subtotal": 0
+  },
+  "D": {
+    "bookInfo": [],
+    "subtotal": 0
+  },
+  "total": 860
+}

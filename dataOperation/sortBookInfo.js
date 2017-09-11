@@ -22,16 +22,13 @@ function sort(bookInfo) {
 
 function compare(property) {
     return function (obj1, obj2) {
-
         var value1 = obj1[property];
         var value2 = obj2[property];
 
         if (value1 > value2) {
-
             return 1;
         }
         else {
-
             return -1;
         }
     }
