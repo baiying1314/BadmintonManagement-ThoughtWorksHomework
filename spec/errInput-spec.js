@@ -1,6 +1,6 @@
 var judgeInputFormat = require('./../dataOperation/judgeInputFormat');
 
-describe('unit-booking', ()=> {
+describe('Functional Test-errInput', ()=> {
     var bookInputString;
     it('should input correct string', ()=> {
         bookInputString = 'sdfghjkl';

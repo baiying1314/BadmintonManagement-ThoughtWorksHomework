@@ -1,6 +1,6 @@
 var judgeInputFormat = require('./../dataOperation/judgeInputFormat');
 
-describe('unit-booking', ()=> {
+describe('Functional Test-errInput', ()=> {
     var bookInputString = 'U002 2017-08-01 19:00~22:00 A';
     beforeEach(()=> {
         spyOn(console, "log");
@@ -12,7 +12,7 @@ describe('unit-booking', ()=> {
     });
 });
 
-describe('', ()=> {
+describe('Functional Test-errInput', ()=> {
     var bookInputString = 'U002 2017-08-01 19:00~22:00 A';
     it("should booking one did not exist", (done)=> {
         spyOn(console, "log");
@@ -23,7 +23,7 @@ describe('', ()=> {
     });
 });
 
-describe('', ()=> {
+describe('Functional Test-errInput', ()=> {
     var bookInputString = 'U002 2017-08-01 19:00~22:00 A C';
     it("should cancel one did exist", (done)=> {
         spyOn(console, "log");
@@ -34,7 +34,7 @@ describe('', ()=> {
     });
 });
 
-describe('', ()=> {
+describe('Functional Test-errInput', ()=> {
     var bookInputString = 'U002 2017-08-01 19:00~22:00 A C';
     it("should cancel one did exist", (done)=> {
         spyOn(console, "log");
@@ -45,7 +45,7 @@ describe('', ()=> {
     });
 });
 
-describe('', ()=> {
+describe('Functional Test-errInput', ()=> {
     var bookInputString = 'U003 2017-08-01 18:00~20:00 A';
     it("should book one did not exist", (done)=> {
         spyOn(console, "log");
@@ -56,7 +56,7 @@ describe('', ()=> {
     });
 });
 
-describe('', ()=> {
+describe('Functional Test-errInput', ()=> {
 
     var bookInputString = 'U003 2017-08-02 13:00~17:00 B';
     it("should book one did not exist", (done)=> {
@@ -67,7 +67,7 @@ describe('', ()=> {
     });
 });
 
-describe('', ()=> {
+describe('Functional Test-errInput', ()=> {
     var bookInputString = ' ';
     it("shoud print correct spaces information", (done)=> {
         var printString = `收入汇总
